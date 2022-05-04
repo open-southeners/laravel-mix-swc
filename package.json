@@ -2,12 +2,12 @@
   "name": "laravel-mix-swc",
   "version": "0.1.0",
   "description": "Integrate SWC JavaScript/TypeScript transpiler with Laravel Mix",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/open-southeners/laravel-mix-swc.git"
   },
   "license": "MIT",
+  "main": "index.js",
   "dependencies": {
     "@swc/core": "^1.2.176",
     "glob": "^8.0.1",

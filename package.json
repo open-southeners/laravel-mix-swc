@@ -13,6 +13,7 @@
     "main": "index.js",
     "dependencies": {
         "@swc/core": "^1.2.176",
+        "deepmerge": "^4.2.2",
         "glob": "^8.0.1",
         "swc-loader": "^0.2.0"
     },

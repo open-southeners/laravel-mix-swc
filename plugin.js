@@ -1,12 +1,13 @@
 const File = require('laravel-mix/src/File');
 const Assert = require('laravel-mix/src/Assert');
 const glob = require('glob');
+const deepmerge = require('deepmerge');
 
 class Swc {
     /** @type {{entry: File[], output: File}[]} */
     toCompile = [];
 
-    /** @type {Record<string, any>} */
+    /** @type {import('@swc/core/types').Config} */
     options = {};
 
     /**
@@ -19,20 +20,11 @@ class Swc {
     }
 
     /**
-     * All npm dependencies that should be installed by Mix.
-     *
-     * @return {Array}
-     */
-    dependencies() {
-        return ['typescript'].concat();
-    }
-
-    /**
      * Register the component.
      *
      * @param {any} entry
      * @param {string} output
-     * @param {Record<string, any>} options
+     * @param {import('@swc/core/types').Config} options
      */
     register(entry, output, options = {}) {
         if (typeof entry === 'string' && entry.includes('*')) {
@@ -47,16 +39,17 @@ class Swc {
 
         global.Mix.bundlingJavaScript = true;
 
-        this.options = options;
-    }
-
-    /**
-     * Boot the component. This method is triggered after the
-     * user's webpack.mix.js file has processed.
-     */
-    boot() {
-        // Example:
-        // if (Config.options.foo) {}
+        // Merge default options with user-defined ones (preferring the last ones)
+        this.options = deepmerge({
+            jsc: {
+                parser: {
+                    syntax: "ecmascript",
+                    tsx: false,
+                    decorators: true,
+                    dynamicImport: true,
+                }
+            }
+        }, options);
     }
 
     /**
@@ -88,21 +81,7 @@ class Swc {
                     {
                         loader: 'swc-loader',
                         // @see https://swc.rs/docs/configuration/compilation
-                        options: Object.assign({}, {
-                            test: ".*.ts$",
-                            // Uncomment this to debug transpiler more in-depth
-                            // sync: true,
-                            jsc: {
-                                parser: {
-                                    syntax: "typescript",
-                                    tsx: false,
-                                    decorators: true,
-                                    dynamicImport: true,
-                                    // Includes inline helpers on the built files, for asyncs, etc
-                                    externalHelpers: true,
-                                }
-                            }
-                        }, this.options),
+                        options: this.options,
                     }
                 ]
             }

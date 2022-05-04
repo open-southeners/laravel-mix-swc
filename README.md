@@ -46,7 +46,7 @@ mix.swc("resources/js/app.js", "public/js", {
 
 ### Config tips
 
-**TypeScript + JavaScript:**
+#### TypeScript with JavaScript
 
 ```json
 {
@@ -60,7 +60,7 @@ mix.swc("resources/js/app.js", "public/js", {
 }
 ```
 
-**JSX support:**
+#### JSX support
 
 ```json
 {
@@ -72,7 +72,7 @@ mix.swc("resources/js/app.js", "public/js", {
 }
 ```
 
-**Vue support:**
+#### Vue support
 
 Very important that you've the decorators enabled, this also supports TypeScript but you can modify that.
 

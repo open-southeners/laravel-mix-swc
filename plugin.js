@@ -3,6 +3,17 @@ const Assert = require('laravel-mix/src/Assert');
 const glob = require('glob');
 const deepmerge = require('deepmerge');
 
+const defaultOptions = {
+    jsc: {
+        parser: {
+            syntax: "ecmascript",
+            tsx: false,
+            decorators: true,
+            dynamicImport: true,
+        }
+    }
+};
+
 class Swc {
     /** @type {{entry: File[], output: File}[]} */
     toCompile = [];
@@ -40,16 +51,7 @@ class Swc {
         global.Mix.bundlingJavaScript = true;
 
         // Merge default options with user-defined ones (preferring the last ones)
-        this.options = deepmerge({
-            jsc: {
-                parser: {
-                    syntax: "ecmascript",
-                    tsx: false,
-                    decorators: true,
-                    dynamicImport: true,
-                }
-            }
-        }, options);
+        this.options = deepmerge(defaultOptions, options);
     }
 
     /**

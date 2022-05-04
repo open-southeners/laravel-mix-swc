@@ -1,6 +1,6 @@
 {
     "name": "laravel-mix-swc",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Integrate SWC JavaScript/TypeScript transpiler with Laravel Mix",
     "repository": {
         "type": "git",

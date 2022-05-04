@@ -1,4 +1,4 @@
-# Laravel mix swc
+# Laravel Mix SWC
 
 Integrate SWC JavaScript transpiler with Laravel Mix.
 
@@ -54,7 +54,6 @@ mix.swc("resources/js/app.js", "public/js", {
     "jsc": {
       "parser": {
         "syntax": "typescript"
-        // ...
       }
     }
 }

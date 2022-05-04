@@ -6,6 +6,9 @@
         "type": "git",
         "url": "https://github.com/open-southeners/laravel-mix-swc.git"
     },
+    "bugs": {
+        "url": "https://github.com/open-southeners/laravel-mix-swc/issues"
+    },
     "license": "MIT",
     "main": "index.js",
     "dependencies": {

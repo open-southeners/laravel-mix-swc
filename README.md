@@ -44,6 +44,53 @@ mix.swc("resources/js/app.js", "public/js", {
 
 [**For more info check the official documentation of swc here.**](https://swc.rs/docs/configuration/swcrc)
 
+### Config tips
+
+**TypeScript + JavaScript:**
+
+```json
+{
+    "test": ".*.ts$",
+    "jsc": {
+      "parser": {
+        "syntax": "typescript"
+        // ...
+      }
+    }
+}
+```
+
+**JSX support:**
+
+```json
+{
+    "jsc": {
+      "parser": {
+        "jsx": true
+      }
+    }
+}
+```
+
+**Vue support:**
+
+Very important that you've the decorators enabled, this also supports TypeScript but you can modify that.
+
+```json
+{
+    "test": ".*.ts$",
+    "jsc": {
+        "parser": {
+            "syntax": "typescript",
+            "jsx": false,
+            "decorators": true,
+            "dynamicImport": true,
+            "exportDefaultFrom": true
+        }
+    }
+}
+```
+
 ## License
 
 This package is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

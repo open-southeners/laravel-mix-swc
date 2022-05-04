@@ -42,7 +42,7 @@ mix.swc("resources/js/app.js", "public/js", {
 })
 ```
 
-[**For more info check the official documentation of swc here.**](https://swc.rs/docs/configuration/swcrc)
+[**For more info check the official documentation of swc here.**](https://swc.rs/docs/configuration/compilation)
 
 ### Config tips
 

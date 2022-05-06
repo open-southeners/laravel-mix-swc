@@ -2,6 +2,8 @@ const File = require('laravel-mix/src/File');
 const Assert = require('laravel-mix/src/Assert');
 const glob = require('glob');
 const deepmerge = require('deepmerge');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const defaultOptions = {
     jsc: {
@@ -55,6 +57,16 @@ class Swc {
     }
 
     /**
+     * Boot the component. This method is triggered after the
+     * user's webpack.mix.js file has executed.
+     */
+     boot() {
+        if (global.Mix.inProduction()) {
+            global.Mix.config.cssNano = false
+        }
+    }
+
+    /**
      * Assets to append to the webpack entry.
      *
      * @param {import('../builder/Entry')} entry
@@ -93,11 +105,22 @@ class Swc {
     /**
      * Override the underlying webpack configuration.
      *
-     * @param {Object} config
+     * @param {import("webpack").Configuration} webpackConfig
      * @return {void}
      */
-    webpackConfig(config) {
-        config.resolve.extensions.push('.ts', '.tsx');
+    webpackConfig(webpackConfig) {
+        webpackConfig.resolve.extensions.push('.ts', '.tsx');
+
+        if (global.Mix.inProduction()) {
+            webpackConfig.optimization.minimizer = [
+                new TerserPlugin({
+                    minify: TerserPlugin.swcMinify,
+                }),
+                new CssMinimizerPlugin({
+                    minify: CssMinimizerPlugin.parcelCssMinify,
+                }),
+            ]
+        }
     }
 }
 

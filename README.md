@@ -1,6 +1,6 @@
 # Laravel Mix SWC
 
-[![npm](https://img.shields.io/npm/v/laravel-mix-swc)](https://www.npmjs.com/package/laravel-mix-swc) [![npm](https://img.shields.io/npm/dw/laravel-mix-swc)](https://www.npmjs.com/package/laravel-mix-swc)
+[![npm](https://img.shields.io/npm/v/laravel-mix-swc)](https://www.npmjs.com/package/laravel-mix-swc) [![npm](https://img.shields.io/npm/dm/laravel-mix-swc)](https://www.npmjs.com/package/laravel-mix-swc)
 
 Integrate SWC JavaScript compiler with Laravel Mix.
 

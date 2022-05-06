@@ -1,5 +1,7 @@
 # Laravel Mix SWC
 
+[![npm](https://img.shields.io/npm/v/laravel-mix-swc)](https://www.npmjs.com/package/laravel-mix-swc) [![npm](https://img.shields.io/npm/dw/laravel-mix-swc)](https://www.npmjs.com/package/laravel-mix-swc)
+
 Integrate SWC JavaScript compiler with Laravel Mix.
 
 We know how far Rust can be in terms of performance, this projects brings all its power for JavaScript compiling (**doing all the job that Babel does but much faster!**).

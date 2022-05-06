@@ -1,8 +1,8 @@
 # Laravel Mix SWC
 
-Integrate SWC JavaScript transpiler with Laravel Mix.
+Integrate SWC JavaScript compiler with Laravel Mix.
 
-We know how far Rust can be in terms of performance, this projects brings all its power for JavaScript transpiling (**doing all the job that Babel does but much faster!**).
+We know how far Rust can be in terms of performance, this projects brings all its power for JavaScript compiling (**doing all the job that Babel does but much faster!**).
 
 [**Check its benchmarks here for more reference.**](https://swc.rs/docs/benchmarks)
 
@@ -37,8 +37,7 @@ mix.swc("resources/js/app.js", "public/js", {
             syntax: "ecmascript",
             jsx: false,
         }
-    },
-    minify: true,
+    }
 })
 ```
 

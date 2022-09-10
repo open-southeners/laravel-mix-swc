@@ -19,8 +19,8 @@
         "url": "https://github.com/open-southeners/laravel-mix-swc.git"
     },
     "license": "MIT",
-    "main": "index.js",
-    "types": "types.d.ts",
+    "main": "src/index.js",
+    "types": "src/types.d.ts",
     "dependencies": {
         "@parcel/css": "^1.8.2",
         "css-minimizer-webpack-plugin": "^3.4.1",

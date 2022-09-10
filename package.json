@@ -1,6 +1,6 @@
 {
     "name": "laravel-mix-swc",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "Integrate SWC JavaScript/TypeScript compiler with Laravel Mix",
     "keywords": [
         "laravel-mix",

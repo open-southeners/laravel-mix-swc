@@ -47,7 +47,7 @@ mix.swc("resources/js/app.js", "public/js", {
 
 ### Config tips
 
-Some "presets" or lets call them like that, remember this is the default config: https://github.com/open-southeners/laravel-mix-swc/blob/e45a3f1b92a1130a1acda2de7801f1348df547b7/plugin.js#L6
+Some "presets" or lets call them like that, remember this is the default config: https://github.com/open-southeners/laravel-mix-swc/blob/e45a3f1b92a1130a1acda2de7801f1348df547b7/src/plugin.js#L6
 
 #### TypeScript with JavaScript
 

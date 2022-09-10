@@ -7,6 +7,8 @@ declare module 'laravel-mix' {
          *
          * `src` may be a glob pattern
          **/
-        swc(src: string | string [], output: string, options: Config): Api
+        swc(src: string | string[], output: string, options?: ConfigPreset | Config, config?: Config): Api
     }
 }
+
+export declare type ConfigPreset = 'js' | 'jsx' | 'tsx' | 'ts' | 'vue' | 'react'

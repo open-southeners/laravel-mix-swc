@@ -1,26 +1,16 @@
 const File = require('laravel-mix/src/File');
 const Assert = require('laravel-mix/src/Assert');
-const glob = require('glob');
-const deepmerge = require('deepmerge');
+const glob = require('fast-glob');
+const defaults = require('lodash.defaultsdeep');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-
-const defaultOptions = {
-    jsc: {
-        parser: {
-            syntax: "ecmascript",
-            tsx: false,
-            decorators: true,
-            dynamicImport: true,
-        }
-    }
-};
+const defaultOptions = require('./defaultOptions');
 
 class Swc {
     /** @type {{entry: File[], output: File}[]} */
     toCompile = [];
 
-    /** @type {import('@swc/core/types').Config} */
+    /** @type {import('@swc/core').Config} */
     options = {};
 
     /**
@@ -33,11 +23,21 @@ class Swc {
     }
 
     /**
+     * Specifiy one or more dependencies that must
+     * be installed for this component to work
+     *
+     * @returns {import("laravel-mix/src/Dependencies").Dependency[]}
+     */
+    dependencies() {
+        return ['@swc/core', 'swc-loader'];
+    }
+
+    /**
      * Register the component.
      *
      * @param {any} entry
      * @param {string} output
-     * @param {import('@swc/core/types').Config} options
+     * @param {import('@swc/core').Config} options
      */
     register(entry, output, options = {}) {
         if (typeof entry === 'string' && entry.includes('*')) {
@@ -45,7 +45,7 @@ class Swc {
         }
 
         Assert.js(entry, output);
-
+        
         entry = [].concat(entry).map(file => new File(file));
 
         this.toCompile.push({ entry, output: new File(output) });
@@ -53,7 +53,7 @@ class Swc {
         global.Mix.bundlingJavaScript = true;
 
         // Merge default options with user-defined ones (preferring the last ones)
-        this.options = deepmerge(defaultOptions, options);
+        this.options = defaults(defaultOptions, options);
     }
 
     /**
@@ -71,7 +71,7 @@ class Swc {
      *
      * @param {import('../builder/Entry')} entry
      */
-     webpackEntry(entry) {
+    webpackEntry(entry) {
         this.toCompile.forEach(js => {
             entry.addFromOutput(
                 js.entry.map(file => file.path()),

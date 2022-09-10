@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.2] - 2022-09-10
+
+### Fixed
+
+- Entrypoint paths in package.json
+
 ## [0.3.1] - 2022-09-10
 
 ### Changed

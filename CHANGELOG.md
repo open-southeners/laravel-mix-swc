@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2022-09-10
+
+### Changed
+
+- Replaced glob dependency with fast-glob
+
+### Fixed
+
+- Moved @swc/core and swc-loader to devDependencies so they can be up to date in the projects using this
+
 ## [0.3.0] - 2022-05-06
 
 ### Added
